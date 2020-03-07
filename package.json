@@ -6,6 +6,10 @@
   "author": "hota1024",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc"
+  },
   "devDependencies": {
     "typescript": "^3.8.3"
   }
