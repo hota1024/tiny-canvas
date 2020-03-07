@@ -1,0 +1,9 @@
+{
+  "name": "tiny-canvas",
+  "version": "0.0.0",
+  "description": "Tiny canvas rendering library.",
+  "main": "lib/index.js",
+  "author": "hota1024",
+  "license": "MIT",
+  "private": false
+}
