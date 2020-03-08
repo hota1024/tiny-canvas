@@ -1,6 +1,6 @@
-import { RendererInterface } from '../../interfaces/Renderer'
-import { LineCap } from '../../types/LinaCap'
-import { TextAlign } from '../../types/TextAlign'
+import { RendererInterface } from '../../../interfaces/Renderer'
+import { LineCap } from '../../../types/LinaCap'
+import { TextAlign } from '../../../types/TextAlign'
 
 /*
  * CanvasRenderer class.
