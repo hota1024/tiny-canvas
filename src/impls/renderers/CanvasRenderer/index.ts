@@ -17,6 +17,20 @@ export class CanvasRenderer implements RendererInterface {
   private readonly context: CanvasRenderingContext2D
 
   /**
+   * Width.
+   */
+  get width() {
+    return this.canvas.width
+  }
+
+  /**
+   * Height.
+   */
+  get height() {
+    return this.canvas.height
+  }
+
+  /**
    * CanvasRenderer constructor.
    *
    * @param canvas
