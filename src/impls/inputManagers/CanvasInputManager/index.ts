@@ -97,7 +97,6 @@ export class CanvasInputManager extends Component
       const state: CanvasInputManagerKeyState = this.mKeysState[event.code]
       state.isPressed = true
       state.isDown = true
-      console.log(state)
     })
 
     document.addEventListener('keyup', event => {
