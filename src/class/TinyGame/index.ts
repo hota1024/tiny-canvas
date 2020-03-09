@@ -51,12 +51,66 @@ export class TinyGame {
   }
 
   /**
+   * Width.
+   */
+  get width() {
+    return this.renderer.width
+  }
+
+  /**
+   * Height.
+   */
+  get height() {
+    return this.renderer.height
+  }
+
+  /**
    * Center position.
    */
   get center(): Point2D {
     return {
       x: this.renderer.width / 2,
       y: this.renderer.height / 2
+    }
+  }
+
+  /**
+   * Left top position.
+   */
+  get leftTop(): Point2D {
+    return {
+      x: 0,
+      y: 0
+    }
+  }
+
+  /**
+   * Right top position.
+   */
+  get rightTop(): Point2D {
+    return {
+      x: this.width,
+      y: 0
+    }
+  }
+
+  /**
+   * Left bottom position.
+   */
+  get leftBottom(): Point2D {
+    return {
+      x: 0,
+      y: this.height
+    }
+  }
+
+  /**
+   * Right bottom position.
+   */
+  get rightBottom(): Point2D {
+    return {
+      x: this.width,
+      y: this.height
     }
   }
 
@@ -135,7 +189,7 @@ export class TinyGame {
   ): any
 
   /**
-   * Draw filled rect with point.
+   * Draw filled rect.
    *
    * @param point
    * @param width
@@ -145,21 +199,66 @@ export class TinyGame {
   fillRect(point: Point2D, width: number, height: number, color: string)
 
   /**
+   * Draw filled rect.
+   *
+   * @param x
+   * @param y
+   * @param size
+   * @param color
+   */
+  fillRect(x: number, y: number, size: Point2D, color: string)
+
+  /**
+   * Draw filled rect.
+   *
+   * @param point
+   * @param size
+   * @param color
+   */
+  fillRect(point: Point2D, size: Point2D, color: string)
+
+  /**
    * Fill rect.
    *
    * @param args
    */
   fillRect(...args: any[]) {
     if (isPoint2D(args[0])) {
-      return this.renderer.fillRect(
-        args[0].x,
-        args[0].y,
-        args[1],
-        args[2],
-        args[3]
-      )
+      if (isPoint2D(args[1])) {
+        return this.renderer.fillRect(
+          args[0].x,
+          args[0].y,
+          args[1].x,
+          args[1].y,
+          args[2]
+        )
+      } else {
+        return this.renderer.fillRect(
+          args[0].x,
+          args[0].y,
+          args[1],
+          args[2],
+          args[3]
+        )
+      }
     } else {
-      return this.renderer.fillRect(args[0], args[1], args[2], args[3], args[4])
+      if (isPoint2D(args[2])) {
+        return this.renderer.fillRect(
+          args[0],
+          args[1],
+          args[2].x,
+          args[3].y,
+          args[4]
+        )
+      } else {
+        return this.renderer.fillRect(
+          args[0],
+          args[1],
+          args[2],
+          args[3],
+          args[4]
+        )
+      }
     }
   }
 
@@ -183,7 +282,7 @@ export class TinyGame {
   ): any
 
   /**
-   * Draw stroked rect with point.
+   * Draw stroked rect.
    *
    * @param point
    * @param width
@@ -197,32 +296,81 @@ export class TinyGame {
     height: number,
     color: string,
     lineWidth: number
-  ): any
+  )
 
   /**
-   * Draw filled rect.
+   * Draw stroked rect.
+   *
+   * @param x
+   * @param y
+   * @param size
+   * @param color
+   * @param lineWidth
+   */
+  strokeRect(
+    x: number,
+    y: number,
+    size: Point2D,
+    color: string,
+    lineWidth: number
+  )
+
+  /**
+   * Draw stroked rect.
+   *
+   * @param point
+   * @param size
+   * @param color
+   * @param lineWidth
+   */
+  strokeRect(point: Point2D, size: Point2D, color: string, lineWidth: number)
+
+  /**
+   * Fill rect.
    *
    * @param args
    */
   strokeRect(...args: any[]) {
     if (isPoint2D(args[0])) {
-      return this.renderer.strokeRect(
-        args[0].x,
-        args[0].y,
-        args[1],
-        args[2],
-        args[3],
-        args[4]
-      )
+      if (isPoint2D(args[1])) {
+        return this.renderer.strokeRect(
+          args[0].x,
+          args[0].y,
+          args[1].x,
+          args[1].y,
+          args[2],
+          args[3]
+        )
+      } else {
+        return this.renderer.strokeRect(
+          args[0].x,
+          args[0].y,
+          args[1],
+          args[2],
+          args[3],
+          args[4]
+        )
+      }
     } else {
-      return this.renderer.strokeRect(
-        args[0],
-        args[1],
-        args[2],
-        args[3],
-        args[4],
-        args[5]
-      )
+      if (isPoint2D(args[2])) {
+        return this.renderer.strokeRect(
+          args[0],
+          args[1],
+          args[2].x,
+          args[3].y,
+          args[4],
+          args[5]
+        )
+      } else {
+        return this.renderer.strokeRect(
+          args[0],
+          args[1],
+          args[2],
+          args[3],
+          args[4],
+          args[5]
+        )
+      }
     }
   }
 
