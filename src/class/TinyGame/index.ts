@@ -62,6 +62,13 @@ export class TinyGame {
   protected onFrame() {}
 
   /**
+   * Start application.
+   */
+  start() {
+    this.ticker.start()
+  }
+
+  /**
    * Draw filled rect.
    *
    * @param x
