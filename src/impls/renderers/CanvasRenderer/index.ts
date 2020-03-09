@@ -1,11 +1,12 @@
 import { RendererInterface } from '../../../interfaces/Renderer'
 import { LineCap } from '../../../types/LinaCap'
 import { TextAlign } from '../../../types/TextAlign'
+import { Component } from '../../../abstracts'
 
 /*
  * CanvasRenderer class.
  */
-export class CanvasRenderer implements RendererInterface {
+export class CanvasRenderer extends Component implements RendererInterface {
   /**
    * Canvas.
    */
@@ -36,6 +37,7 @@ export class CanvasRenderer implements RendererInterface {
    * @param canvas
    */
   constructor(canvas: HTMLCanvasElement) {
+    super()
     this.canvas = canvas
     const context = canvas.getContext('2d')
 
