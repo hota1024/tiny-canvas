@@ -46,3 +46,8 @@ export class Game extends TinyGame {
 }
 
 ```
+
+## Build
+
+Build `yarn build`
+Watch build `yarn dev`
