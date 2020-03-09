@@ -1,10 +1,11 @@
 import { TextAlign } from '../../types/TextAlign'
 import { LineCap } from '../../types/LinaCap'
+import { ComponentInterface } from '../Component'
 
 /*
  * Renderer interface.
  */
-export interface RendererInterface {
+export interface RendererInterface extends ComponentInterface {
   /**
    * Width.
    */
