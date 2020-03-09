@@ -22,19 +22,6 @@ export class TinyGame {
   protected ticker: TickerInterface
 
   /**
-   * Create from canvas element.
-   *
-   * @param canvas
-   * @param ticker
-   */
-  static fromCanvas(
-    canvas: HTMLCanvasElement,
-    ticker: TickerInterface = new AnimationFrameRequestTicker()
-  ) {
-    return new TinyGame(new CanvasRenderer(canvas), ticker)
-  }
-
-  /**
    * TinyGame constructor.
    *
    * @param renderer
@@ -59,7 +46,9 @@ export class TinyGame {
    * Call on frame.
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  protected onFrame() {}
+  protected onFrame() {
+    console.log(this)
+  }
 
   /**
    * Start application.
