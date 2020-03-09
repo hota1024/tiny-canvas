@@ -43,6 +43,7 @@ export class AnimationFrameRequestTicker implements TickerInterface {
   private callbackWrapper() {
     this.callback()
     ++this.mCurrentFrames
+    requestAnimationFrame(this.callbackWrapper.bind(this))
   }
 
   /**
