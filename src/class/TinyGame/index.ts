@@ -33,6 +33,24 @@ export class TinyGame {
   protected components: ComponentInterface[] = []
 
   /**
+   * Cursor.
+   */
+  get cursor() {
+    return this.cursorPos()
+  }
+
+  /**
+   * Mouse.
+   */
+  get mouse() {
+    return {
+      leftPressed: this.leftPressed(),
+      leftUp: this.leftUp(),
+      leftDown: this.leftDown()
+    }
+  }
+
+  /**
    * TinyGame constructor.
    *
    * @param renderer
