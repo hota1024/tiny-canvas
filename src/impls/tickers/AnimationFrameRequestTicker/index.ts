@@ -1,9 +1,11 @@
 import { TickerInterface } from '../../../interfaces/Ticker'
+import { Component } from '../../../abstracts'
 
 /*
  * AnimationFrameRequestTicker class
  */
-export class AnimationFrameRequestTicker implements TickerInterface {
+export class AnimationFrameRequestTicker extends Component
+  implements TickerInterface {
   /**
    * Whether is started.
    */
