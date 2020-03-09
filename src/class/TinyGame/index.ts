@@ -6,6 +6,7 @@ import { isPoint2D } from '../../helpers'
 import { TickerInterface } from '../../interfaces/Ticker'
 import { InputManagerInterface } from '../../interfaces/InputManager'
 import { ComponentInterface } from '../../interfaces/Component'
+import { KeyCode } from '../..'
 
 /**
  * TinyGame class.
@@ -695,5 +696,54 @@ export class TinyGame {
    */
   rotate(x: number, y: number, angle: number) {
     this.renderer.rotate(x, y, angle)
+  }
+
+  /**
+   * Returns cursor position.
+   */
+  cursorPos() {
+    return this.inputManager.cursorPos()
+  }
+
+  /**
+   * Returns whether mouse left clicking.
+   */
+  leftPressed() {
+    return this.inputManager.leftPressed()
+  }
+
+  /**
+   * Returns whether mouse left up.
+   */
+  leftUp() {
+    return this.inputManager.leftUp()
+  }
+
+  /**
+   * Returns whether mouse left down.
+   */
+  leftDown() {
+    return this.inputManager.leftDown()
+  }
+
+  /**
+   * Returns whether key pressed.
+   */
+  keyPressed(code: KeyCode) {
+    return this.inputManager.keyPressed(code)
+  }
+
+  /**
+   * Returns whether key up.
+   */
+  keyUp(code: KeyCode) {
+    return this.inputManager.keyUp(code)
+  }
+
+  /**
+   * Returns whether key down.
+   */
+  keyDown(code: KeyCode) {
+    return this.inputManager.keyDown(code)
   }
 }
