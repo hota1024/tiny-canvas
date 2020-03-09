@@ -6,6 +6,16 @@ import { LineCap } from '../../types/LinaCap'
  */
 export interface RendererInterface {
   /**
+   * Width.
+   */
+  readonly width: number
+
+  /**
+   * Height.
+   */
+  readonly height: number
+
+  /**
    * Draw filled rectangle.
    *
    * @param x
