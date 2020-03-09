@@ -51,6 +51,16 @@ export class TinyGame {
   }
 
   /**
+   * Center position.
+   */
+  get center(): Point2D {
+    return {
+      x: this.renderer.width / 2,
+      y: this.renderer.height / 2
+    }
+  }
+
+  /**
    * TinyGame constructor.
    *
    * @param renderer
