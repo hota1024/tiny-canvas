@@ -3,9 +3,7 @@ import { LineCap } from '../../types/LinaCap'
 import { TextAlign } from '../../types/TextAlign'
 import { Point2D } from '../../types/Point2D'
 import { isPoint2D } from '../../helpers'
-import { CanvasRenderer } from '../../impls'
 import { TickerInterface } from '../../interfaces/Ticker'
-import { AnimationFrameRequestTicker } from '../../impls/tickers'
 
 /**
  * TinyGame class.
