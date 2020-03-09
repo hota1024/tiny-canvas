@@ -14,12 +14,12 @@ export class TinyGame {
   /**
    * Renderer.
    */
-  private renderer: RendererInterface
+  protected renderer: RendererInterface
 
   /**
    * Ticker.
    */
-  private ticker: TickerInterface
+  protected ticker: TickerInterface
 
   /**
    * Create from canvas element.
