@@ -1,7 +1,9 @@
+import { ComponentInterface } from '../Component'
+
 /*
  * TickerInterface.
  */
-export interface TickerInterface {
+export interface TickerInterface extends ComponentInterface {
   /**
    * Set callback.
    */
