@@ -4,6 +4,8 @@ import { TextAlign } from '../../types/TextAlign'
 import { Point2D } from '../../types/Point2D'
 import { isPoint2D } from '../../helpers'
 import { TickerInterface } from '../../interfaces/Ticker'
+import { InputManagerInterface } from '../../interfaces/InputManager'
+import { ComponentInterface } from '../../interfaces/Component'
 
 /**
  * TinyGame class.
@@ -15,38 +17,69 @@ export class TinyGame {
   protected renderer: RendererInterface
 
   /**
+   * Input manager.
+   */
+  protected inputManager: InputManagerInterface
+
+  /**
    * Ticker.
    */
   protected ticker: TickerInterface
 
   /**
+   * Components.
+   */
+  protected components: ComponentInterface[] = []
+
+  /**
    * TinyGame constructor.
    *
    * @param renderer
+   * @param inputManager
    * @param ticker
    */
-  constructor(renderer: RendererInterface, ticker: TickerInterface) {
+  constructor(
+    renderer: RendererInterface,
+    inputManager: InputManagerInterface,
+    ticker: TickerInterface
+  ) {
+    // Set components.
     this.renderer = renderer
+    this.inputManager = inputManager
     this.ticker = ticker
+
+    // Register components.
+    this.register(this.renderer)
+    this.register(this.inputManager)
+    this.register(this.ticker)
 
     // Set ticker callback.
     this.ticker.setCallback(this.onFrameWrapper.bind(this))
   }
 
   /**
+   * Register a component.
+   *
+   * @param component
+   */
+  protected register(component: ComponentInterface) {
+    this.components.push(component)
+  }
+
+  /**
    * onFrame wrapper.
    */
   private onFrameWrapper() {
+    this.components.forEach(component => component.onFrameStart())
     this.onFrame()
+    this.components.forEach(component => component.onFrameEnd())
   }
 
   /**
    * Call on frame.
    */
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  protected onFrame() {
-    console.log(this)
-  }
+  protected onFrame() {}
 
   /**
    * Start application.
