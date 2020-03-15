@@ -11,6 +11,23 @@ export class TinyGrid<T> {
    */
   protected readonly grid: Grid<T>
 
+  constructor(width: number, height: number)
+  constructor(lines: T[][])
+
+  /**
+   * TinyGrid constructor.
+   *
+   * @param args
+   */
+  constructor(...args) {
+    if (typeof args[0] === 'number') {
+      this.grid = new Grid(args[0], args[1])
+    } else {
+      this.grid = new Grid(args[0].length, args.length)
+      this.grid.map((x, y) => args[y][x])
+    }
+  }
+
   /**
    * Width.
    */
@@ -109,6 +126,15 @@ export class TinyGrid<T> {
   }
 
   /**
+   * Map data.
+   *
+   * @param callback
+   */
+  map(callback: (x: number, y: number, data: T) => T) {
+    this.grid.map(callback)
+  }
+
+  /**
    * Every data.
    *
    * @param callback
@@ -124,5 +150,25 @@ export class TinyGrid<T> {
    */
   some(callback: (x: number, y: number, data: T) => boolean) {
     this.grid.some(callback)
+  }
+
+  /**
+   * Set data.
+   *
+   * @param lines
+   */
+  setData(lines: T[][]) {
+    this.grid.map((x, y) => {
+      return lines[y][x]
+    })
+  }
+
+  /**
+   * Clone the grid.
+   */
+  clone() {
+    return new TinyGrid<T>(this.width, this.height).map((x, y) =>
+      this.get(x, y)
+    )
   }
 }
