@@ -72,6 +72,34 @@ export class Grid<T> implements GridInterface<T> {
   }
 
   /**
+   * Every data.
+   *
+   * @param callback
+   */
+  every(callback: (x: number, y: number, data: T) => boolean) {
+    for (let y = 0; y < this.height; ++y) {
+      for (let x = 0; x < this.width; ++x) {
+        if (callback(x, y, this.get(x, y)) === false) return
+      }
+    }
+    return true
+  }
+
+  /**
+   * Some data.
+   *
+   * @param callback
+   */
+  some(callback: (x: number, y: number, data: T) => boolean) {
+    for (let y = 0; y < this.height; ++y) {
+      for (let x = 0; x < this.width; ++x) {
+        if (callback(x, y, this.get(x, y))) return true
+      }
+    }
+    return false
+  }
+
+  /**
    * Returns point index.
    *
    * @param x
