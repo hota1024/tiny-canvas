@@ -112,7 +112,10 @@ export class CanvasInputManager extends Component
    * Returns cursor position.
    */
   cursorPos() {
-    return this.mCursorPos
+    return {
+      x: this.mCursorPos.x,
+      y: this.mCursorPos.y
+    }
   }
 
   /**

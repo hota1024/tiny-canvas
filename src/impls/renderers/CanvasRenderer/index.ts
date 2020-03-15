@@ -301,6 +301,53 @@ export class CanvasRenderer extends Component implements RendererInterface {
   }
 
   /**
+   * Stroke vertices.
+   *
+   * @param vertices
+   * @param color
+   * @param lineWidth
+   */
+  strokeVertices(
+    vertices: [number, number][],
+    color: string,
+    lineWidth: number
+  ) {
+    // If vertices count is smaller than 2, no draw.
+    if (vertices.length < 2) return
+    this.setStroke(color, lineWidth)
+
+    this.moveTo(vertices[0][0], vertices[0][1])
+    this.beginPath()
+
+    for (const vertex of vertices) {
+      this.lineTo(vertex[0], vertex[1])
+    }
+
+    this.stroke()
+  }
+
+  /**
+   * Fill vertices.
+   *
+   * @param vertices
+   * @param color
+   */
+  fillVertices(vertices: [number, number][], color: string) {
+    // If vertices count is smaller than 2, no draw.
+    if (vertices.length < 2) return
+    this.setFillStyle(color)
+
+    this.beginPath()
+    this.moveTo(vertices[0][0], vertices[0][1])
+
+    for (const vertex of vertices.slice(1)) {
+      this.lineTo(vertex[0], vertex[1])
+    }
+
+    this.fill()
+  }
+
+  /**
    * Set font.
    *
    * @param fontFamily
@@ -400,5 +447,15 @@ export class CanvasRenderer extends Component implements RendererInterface {
    */
   private moveTo(x: number, y: number) {
     this.context.moveTo(x, y)
+  }
+
+  /**
+   * Line to.
+   *
+   * @param x
+   * @param y
+   */
+  private lineTo(x: number, y: number) {
+    this.context.lineTo(x, y)
   }
 }

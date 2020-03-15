@@ -864,6 +864,87 @@ export class TinyGame {
   }
 
   /**
+   * Fill vertices.
+   *
+   * @param vertices
+   * @param color
+   * @param lineWidth
+   */
+  fillVertices(vertices: [number, number][], color: string): any
+
+  /**
+   * Fill vertices.
+   *
+   * @param vertices
+   * @param color
+   * @param lineWidth
+   */
+  fillVertices(vertices: Point2D[], color: string): any
+
+  /**
+   * Fill vertices.
+   */
+  fillVertices(...args: any[]) {
+    if (typeof args[0] !== 'object') {
+      throw new Error('TinyGame#fillVertices first argument must be array.')
+    }
+
+    if (isPoint2D(args[0][0])) {
+      return this.renderer.fillVertices(this.pointsToVertices(args[0]), args[1])
+    } else {
+      return this.renderer.fillVertices(args[0], args[1])
+    }
+  }
+
+  /**
+   * Stroke vertices.
+   *
+   * @param vertices
+   * @param color
+   * @param lineWidth
+   */
+  strokeVertices(
+    vertices: [number, number][],
+    color: string,
+    lineWidth: number
+  ): any
+
+  /**
+   * Stroke vertices.
+   *
+   * @param vertices
+   * @param color
+   * @param lineWidth
+   */
+  strokeVertices(vertices: Point2D[], color: string, lineWidth: number): any
+
+  /**
+   * Stroke vertices.
+   */
+  strokeVertices(...args: any[]) {
+    if (typeof args[0] !== 'object') {
+      throw new Error('TinyGame#strokeVertices first argument must be array.')
+    }
+
+    if (isPoint2D(args[0][0])) {
+      return this.renderer.strokeVertices(
+        this.pointsToVertices(args[0]),
+        args[1],
+        args[2]
+      )
+    } else {
+      return this.renderer.strokeVertices(args[0], args[1], args[2])
+    }
+  }
+
+  /**
+   * Convert point array to vertices data.
+   */
+  pointsToVertices(points: Point2D[]) {
+    return points.map(({ x, y }) => [x, y] as [number, number])
+  }
+
+  /**
    * Rotate.
    *
    * @param x

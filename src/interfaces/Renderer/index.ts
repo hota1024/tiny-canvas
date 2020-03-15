@@ -184,6 +184,27 @@ export interface RendererInterface extends ComponentInterface {
   ): any
 
   /**
+   * Stroke vertices.
+   *
+   * @param vertices
+   * @param color
+   * @param lineWidth
+   */
+  strokeVertices(
+    vertices: [number, number][],
+    color: string,
+    lineWidth: number
+  ): any
+
+  /**
+   * Fill vertices.
+   *
+   * @param vertices
+   * @param color
+   */
+  fillVertices(vertices: [number, number][], color: string): any
+
+  /**
    * Rotate.
    *
    * @param x
