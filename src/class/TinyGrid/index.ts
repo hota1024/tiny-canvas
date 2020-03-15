@@ -101,10 +101,12 @@ export class TinyGrid<T> {
    */
   set(...args: any[]) {
     if (isPoint2D(args[0])) {
-      return this.set(args[0].x, args[0].y, args[1])
+      this.set(args[0].x, args[0].y, args[1])
     } else {
-      return this.set(args[0], args[1], args[2])
+      this.set(args[0], args[1], args[2])
     }
+
+    return this
   }
 
   /**
@@ -114,6 +116,8 @@ export class TinyGrid<T> {
    */
   fill(data: T) {
     this.grid.fill(data)
+
+    return this
   }
 
   /**
@@ -123,6 +127,8 @@ export class TinyGrid<T> {
    */
   each(callback: (x: number, y: number, data: T) => void) {
     this.grid.each(callback)
+
+    return this
   }
 
   /**
@@ -132,6 +138,8 @@ export class TinyGrid<T> {
    */
   map(callback: (x: number, y: number, data: T) => T) {
     this.grid.map(callback)
+
+    return this
   }
 
   /**
@@ -140,7 +148,7 @@ export class TinyGrid<T> {
    * @param callback
    */
   every(callback: (x: number, y: number, data: T) => boolean) {
-    this.grid.every(callback)
+    return this.grid.every(callback)
   }
 
   /**
@@ -149,7 +157,7 @@ export class TinyGrid<T> {
    * @param callback
    */
   some(callback: (x: number, y: number, data: T) => boolean) {
-    this.grid.some(callback)
+    return this.grid.some(callback)
   }
 
   /**
@@ -161,6 +169,8 @@ export class TinyGrid<T> {
     this.grid.map((x, y) => {
       return lines[y][x]
     })
+
+    return this
   }
 
   /**
