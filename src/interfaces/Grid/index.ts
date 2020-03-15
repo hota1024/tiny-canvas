@@ -47,4 +47,18 @@ export interface GridInterface<T> {
    * @param callback
    */
   each(callback: (x: number, y: number, data: T) => void): void
+
+  /**
+   * Every data.
+   *
+   * @param callback
+   */
+  every(callback: (x: number, y: number, data: T) => boolean): boolean
+
+  /**
+   * Some data.
+   *
+   * @param callback
+   */
+  some(callback: (x: number, y: number, data: T) => boolean): boolean
 }
