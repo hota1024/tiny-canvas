@@ -35,8 +35,11 @@ export class Grid<T> implements GridInterface<T> {
   constructor(width: number, height: number) {
     this.width = width
     this.height = height
+    this.data = []
 
-    this.map(() => undefined)
+    for (let i = 0; i < this.count; ++i) {
+      this.data.push(undefined)
+    }
   }
 
   /**
@@ -46,6 +49,8 @@ export class Grid<T> implements GridInterface<T> {
    * @param y
    */
   get(x: number, y: number) {
+    if (x < 0 || x > this.width - 1 || y < 0 || y > this.height - 1)
+      return undefined
     return this.data[this.getPointIndex(x, y)]
   }
 
@@ -58,6 +63,8 @@ export class Grid<T> implements GridInterface<T> {
    */
   set(x: number, y: number, data: T) {
     this.data[this.getPointIndex(x, y)] = data
+
+    return this
   }
 
   /**
@@ -69,6 +76,8 @@ export class Grid<T> implements GridInterface<T> {
     for (let i = 0; i < this.count; ++i) {
       this.data[i] = data
     }
+
+    return this
   }
 
   /**
@@ -82,6 +91,8 @@ export class Grid<T> implements GridInterface<T> {
         callback(x, y, this.get(x, y))
       }
     }
+
+    return this
   }
 
   /**
@@ -95,6 +106,8 @@ export class Grid<T> implements GridInterface<T> {
         this.set(x, y, callback(x, y, this.get(x, y)))
       }
     }
+
+    return this
   }
 
   /**
