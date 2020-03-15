@@ -107,4 +107,22 @@ export class TinyGrid<T> {
   each(callback: (x: number, y: number, data: T) => void) {
     this.grid.each(callback)
   }
+
+  /**
+   * Every data.
+   *
+   * @param callback
+   */
+  every(callback: (x: number, y: number, data: T) => boolean) {
+    this.grid.every(callback)
+  }
+
+  /**
+   * Some data.
+   *
+   * @param callback
+   */
+  some(callback: (x: number, y: number, data: T) => boolean) {
+    this.grid.some(callback)
+  }
 }
