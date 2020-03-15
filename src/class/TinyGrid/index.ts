@@ -181,4 +181,13 @@ export class TinyGrid<T> {
       this.get(x, y)
     )
   }
+
+  /**
+   * Create grid from data.
+   *
+   * @param lines
+   */
+  static FromData<T>(lines: T[][]) {
+    return new TinyGrid<T>(lines)
+  }
 }
