@@ -23,8 +23,8 @@ export class TinyGrid<T> {
     if (typeof args[0] === 'number') {
       this.grid = new Grid(args[0], args[1])
     } else {
-      this.grid = new Grid(args[0].length, args.length)
-      this.grid.map((x, y) => args[y][x])
+      this.grid = new Grid(args[0][0].length, args[0].length)
+      this.setData(args[0])
     }
   }
 
@@ -71,9 +71,9 @@ export class TinyGrid<T> {
    */
   get(...args: any[]) {
     if (isPoint2D(args[0])) {
-      return this.get(args[0].x, args[0].y)
+      return this.grid.get(args[0].x, args[0].y)
     } else {
-      return this.get(args[0], args[1])
+      return this.grid.get(args[0], args[1])
     }
   }
 
@@ -101,9 +101,9 @@ export class TinyGrid<T> {
    */
   set(...args: any[]) {
     if (isPoint2D(args[0])) {
-      this.set(args[0].x, args[0].y, args[1])
+      this.grid.set(args[0].x, args[0].y, args[1])
     } else {
-      this.set(args[0], args[1], args[2])
+      this.grid.set(args[0], args[1], args[2])
     }
 
     return this
