@@ -84,7 +84,7 @@ export class TinyGrid<T> {
    * @param y
    * @param data
    */
-  set(x: number, y: number, data: T): void
+  set(x: number, y: number, data: T): this
 
   /**
    * Set point data.
@@ -92,7 +92,7 @@ export class TinyGrid<T> {
    * @param point
    * @param data
    */
-  set(point: Point2D, data: T): void
+  set(point: Point2D, data: T): this
 
   /**
    * Get point data.
@@ -132,14 +132,28 @@ export class TinyGrid<T> {
   }
 
   /**
+   * Set each data.
+   *
+   * @param callback
+   */
+  setEach(callback: (x: number, y: number, data: T) => T) {
+    this.grid.setEach(callback)
+
+    return this
+  }
+
+  /**
    * Map data.
    *
    * @param callback
    */
-  map(callback: (x: number, y: number, data: T) => T) {
-    this.grid.map(callback)
+  map<R>(callback: (x: number, y: number, data: T) => R) {
+    const mapped = this.grid.map(callback)
+    const result = new TinyGrid<R>(this.width, this.height).setEach((x, y) =>
+      mapped.get(x, y)
+    )
 
-    return this
+    return result
   }
 
   /**
@@ -177,7 +191,7 @@ export class TinyGrid<T> {
    * Clone the grid.
    */
   clone() {
-    return new TinyGrid<T>(this.width, this.height).map((x, y) =>
+    return new TinyGrid<T>(this.width, this.height).setEach((x, y) =>
       this.get(x, y)
     )
   }
