@@ -96,11 +96,11 @@ export class Grid<T> implements GridInterface<T> {
   }
 
   /**
-   * Map data.
+   * Set each data.
    *
    * @param callback
    */
-  map(callback: (x: number, y: number, data: T) => T) {
+  setEach(callback: (x: number, y: number, data: T) => T) {
     for (let y = 0; y < this.height; ++y) {
       for (let x = 0; x < this.width; ++x) {
         this.set(x, y, callback(x, y, this.get(x, y)))
@@ -108,6 +108,19 @@ export class Grid<T> implements GridInterface<T> {
     }
 
     return this
+  }
+
+  /**
+   * Map data.
+   *
+   * @param callback
+   */
+  map<R>(callback: (x: number, y: number, data: T) => R) {
+    const result = new Grid<R>(this.width, this.height).setEach((x, y) =>
+      callback(x, y, this.get(x, y))
+    )
+
+    return result
   }
 
   /**
