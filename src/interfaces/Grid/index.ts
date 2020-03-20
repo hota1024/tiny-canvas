@@ -49,11 +49,18 @@ export interface GridInterface<T> {
   each(callback: (x: number, y: number, data: T) => void): void
 
   /**
+   * Set each data.
+   *
+   * @param callback
+   */
+  setEach(callback: (x: number, y: number, data: T) => T): void
+
+  /**
    * Map data.
    *
    * @param callback
    */
-  map(callback: (x: number, y: number, data: T) => T): void
+  map<R>(callback: (x: number, y: number, data: T) => R): GridInterface<R>
 
   /**
    * Every data.
