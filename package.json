@@ -1,6 +1,6 @@
 {
   "name": "tiny-canvas",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Tiny canvas rendering library.",
   "main": "lib/index.js",
   "files": [
