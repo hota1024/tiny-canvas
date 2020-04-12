@@ -216,10 +216,11 @@ export class CanvasRenderer extends Component implements RendererInterface {
   ) {
     this.setStroke(color, lineWidth)
     this.beginPath()
-    let degree = offsetAngle
+    let degree = (offsetAngle * 180) / Math.PI
 
-    for (let i = 0; i < corners; ++i) {
-      const rad = (degree / 360) * Math.PI * 2
+    for (let i = 0; i < corners + 1; ++i) {
+      // const rad = (degree / 360) * Math.PI * 2
+      const rad = (degree * Math.PI) / 180
       const ax = x + Math.cos(rad) * radius
       const ay = y + Math.sin(rad) * radius
 
